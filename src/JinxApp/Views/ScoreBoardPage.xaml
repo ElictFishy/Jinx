@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:JinxApp.Views"
+             x:Class="JinxApp.Views.ScoreBoardPage"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="background_wind_cards.png" Aspect="AspectFill"/>
+
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <Label Grid.Row="0"
+                Text="Scores"
+                HorizontalOptions="Center"
+                FontSize="50"
+                FontFamily="Party Vibes"/>
+
+            <!-- Tableau des meilleurs scores -->
+            <VerticalStackLayout x:Name="TableSection"
+                                 Grid.Row="1"
+                                 Padding="20"
+                                 HorizontalOptions="Center" VerticalOptions="Center">
+
+                <Border BackgroundColor="#CCCCCCCC" StrokeShape="RoundRectangle 12"
+                        Stroke="#512BD4" StrokeThickness="2"
+                        Padding="12" HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- En-tête -->
+                        <Grid ColumnDefinitions="50, 300, 150"
+                              BackgroundColor="#80333333"
+                              Padding="10">
+                            <Label Grid.Column="0" Text="#"
+                               FontSize="16" TextColor="White" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Nom du joueur"
+                               FontSize="16" TextColor="White" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="Score"
+                               FontSize="16" TextColor="White" FontAttributes="Bold"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+
+                        <!-- Lignes (top 5) -->
+                        <VerticalStackLayout x:Name="ScoreRows" Spacing="10">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="views:ScoreRowView">
+                                    <Grid ColumnDefinitions="50, 300, 150"
+                                          BackgroundColor="#80CCCCCC"
+                                          Padding="10">
+                                        <Label Grid.Column="0" Text="{Binding Rank}" TextColor="Black"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Text="{Binding Name}" TextColor="Black"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Label Grid.Column="2" Text="{Binding ScoreText}" TextColor="Black"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+
+            <!-- État vide : aucun score enregistré -->
+            <VerticalStackLayout x:Name="EmptySection"
+                                 Grid.Row="1"
+                                 IsVisible="False"
+                                 Spacing="24"
+                                 Padding="20"
+                                 HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Aucun score enregistré"
+                       FontSize="34" FontAttributes="Bold"
+                       TextColor="Black"
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Button x:Name="NewGameBtn"
+                        Text="Nouvelle partie"
+                        Clicked="OnBtnNewGameClicked"
+                        Style="{StaticResource MenuButton}"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2" Padding="20" Spacing="10">
+                <Button
+                    x:Name="PlayBtn"
+                    Text="Historique des parties"
+                    Clicked="OnBtnHistoryClicked"
+                    Style="{StaticResource MenuButton}"/>
+                <Button
+                    x:Name="BackBtn"
+                    Text="Retour à l'accueil"
+                    Clicked="OnBtnRetourClicked"
+                    Style="{StaticResource MenuButton}"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

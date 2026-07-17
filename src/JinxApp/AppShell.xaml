@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="JinxApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JinxApp"
+    xmlns:views="clr-namespace:JinxApp.Views"
+    Title="JinxApp">
+    
+    <ShellContent
+        Title="HomePage"
+        ContentTemplate="{DataTemplate views:HomePage}"
+        Route="HomePage" />
+    
+    <ShellContent
+        Title="PlayPage"
+        ContentTemplate="{DataTemplate views:PlayPage}"
+        Route="PlayPage" />
+
+    <ShellContent
+        Title="ScoreBoardPage"
+        ContentTemplate="{DataTemplate views:ScoreBoardPage}"
+        Route="ScoreBoardPage" />
+
+    <ShellContent
+        Title="RulesPage"
+        ContentTemplate="{DataTemplate views:RulesPage}"
+        Route="RulesPage" />
+
+    <ShellContent
+        Title="HistoryPage"
+        ContentTemplate="{DataTemplate views:HistoryPage}"
+        Route="HistoryPage" />
+
+
+</Shell>

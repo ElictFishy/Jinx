@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:JinxApp.Views"
+             x:Class="JinxApp.Views.HistoryPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Image Source="background_play.png" Aspect="AspectFill"/>
+
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <Label Grid.Row="0"
+                   Text="Historique"
+                   HorizontalOptions="Center" 
+                   FontSize="50"
+                   FontFamily="Party Vibes"/>
+
+            <CollectionView x:Name="HistoryList" Grid.Row="1">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <Label Text="Aucune partie terminée pour le moment."
+                           FontSize="18" TextColor="Black" FontAttributes="Bold"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           HorizontalTextAlignment="Center" Padding="20"/>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="views:HistoryEntryView">
+                        <Border BackgroundColor="#CCCCCCCC" StrokeShape="RoundRectangle 12"
+                                Stroke="#512BD4" StrokeThickness="2"
+                                Padding="16" Margin="20,0"
+                                WidthRequest="392" HorizontalOptions="Center">
+                            <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+
+                                <!-- Date et heure -->
+                                <Label Text="{Binding DateText}"
+                                       FontSize="18" TextColor="Black" FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+
+                                <!-- En-tête tableau -->
+                                <Grid ColumnDefinitions="240, 120"
+                                      WidthRequest="360" HorizontalOptions="Center"
+                                      BackgroundColor="#80333333"
+                                      Padding="10">
+                                    <Label Grid.Column="0" Text="Joueur"
+                                           FontSize="16" TextColor="White" FontAttributes="Bold"
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" Text="Score"
+                                           FontSize="16" TextColor="White" FontAttributes="Bold"
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Lignes joueurs (triées par score décroissant) -->
+                                <VerticalStackLayout Spacing="8" HorizontalOptions="Center"
+                                                     BindableLayout.ItemsSource="{Binding Rows}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="views:HistoryRowView">
+                                            <Grid ColumnDefinitions="240, 120"
+                                                  WidthRequest="360" HorizontalOptions="Center"
+                                                  BackgroundColor="{Binding RowColor}"
+                                                  Padding="10">
+                                                <Label Grid.Column="0" Text="{Binding PlayerName}"
+                                                       FontSize="16" TextColor="Black"
+                                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                <Label Grid.Column="1" Text="{Binding ScoreText}"
+                                                       FontSize="16" TextColor="Black"
+                                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Bouton retour -->
+            <VerticalStackLayout Grid.Row="2" Padding="20" Spacing="10">
+                <Button x:Name="BackBtn"
+                        Text="Retour à l'accueil"
+                        Clicked="OnBtnRetourClicked"
+                        Style="{StaticResource MenuButton}"/>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

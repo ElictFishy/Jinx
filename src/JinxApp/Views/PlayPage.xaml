@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JinxApp.Views.PlayPage"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="background_play.png" Aspect="AspectFill"/>
+
+        <Grid RowDefinitions="*, Auto">
+            <ScrollView Grid.Row="0">
+                <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center">
+                    <Label 
+                        Text="Jinx"
+                        HorizontalOptions="Center" 
+                        FontSize="50"
+                        FontFamily="Party Vibes"/>
+
+                    <!-- Joueur 1 -->
+                    <Border BackgroundColor="#80CCCCCC" StrokeShape="RoundRectangle 8" Padding="10">
+                        <Grid ColumnDefinitions="80, 200, 38, 40, 40">
+                            <Label Grid.Column="0"  Text="Joueur 1 :" VerticalOptions="Center"/>
+                            <Entry Grid.Column="1" x:Name ="LblJoueur1" Placeholder="Nom du joueur 1" TextColor="Black"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Joueur 2 -->
+                    <Border BackgroundColor="#80CCCCCC" StrokeShape="RoundRectangle 8" Padding="10">
+                        <Grid ColumnDefinitions="80, 200, 38, 40, 40">
+                            <Label Grid.Column="0" Text="Joueur 2 :" VerticalOptions="Center"/>
+                            <Entry Grid.Column="1" x:Name ="LblJoueur2" Placeholder="Nom du joueur 2" TextColor="Black"/>
+                            <CheckBox Grid.Column="2" x:Name="ChkIA2" VerticalOptions="Center"/>
+                            <Label Grid.Column="3" Text="IA" VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Joueur 3 -->
+                    <Border x:Name="BorderJoueur3" BackgroundColor="#80CCCCCC" StrokeShape="RoundRectangle 8" Padding="10">
+                        <Grid>
+                            <HorizontalStackLayout x:Name="AjouterJoueur3" Spacing="10" HorizontalOptions="Center">
+                                <CheckBox x:Name="ChkJoueur3" CheckedChanged="OnJoueur3Checked"/>
+                                <Label Text="Ajouter joueur 3" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <Grid x:Name="LayoutJoueur3" IsVisible="False" ColumnDefinitions="80, 200, 38, 40, 40">
+                                <Label Grid.Column="0" Text="Joueur 3 :" VerticalOptions="Center"/>
+                                <Entry Grid.Column="1" x:Name="LblJoueur3" Placeholder="Nom du joueur 3" TextColor="Black"/>
+                                <CheckBox Grid.Column="2" x:Name="ChkIA3" VerticalOptions="Center"/>
+                                <Label Grid.Column="3" Text="IA" VerticalOptions="Center"/>
+                                <Button Grid.Column="4" Text="✕" Clicked="OnRetirerJoueur3Clicked"
+                                        WidthRequest="40" HeightRequest="40"
+                                        BackgroundColor="Red" TextColor="White" CornerRadius="20"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Joueur 4 -->
+                    <Border x:Name="BorderJoueur4" IsVisible="False" BackgroundColor="#80CCCCCC" StrokeShape="RoundRectangle 8" Padding="10">
+                        <Grid>
+                            <HorizontalStackLayout x:Name="AjouterJoueur4" Spacing="10" HorizontalOptions="Center">
+                                <CheckBox x:Name="ChkJoueur4" CheckedChanged="OnJoueur4Checked"/>
+                                <Label Text="Ajouter joueur 4" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <Grid x:Name="LayoutJoueur4" IsVisible="False" ColumnDefinitions="80, 200, 38, 40, 40">
+                                <Label Grid.Column="0" Text="Joueur 4 :" VerticalOptions="Center"/>
+                                <Entry Grid.Column="1" x:Name="LblJoueur4" Placeholder="Nom du joueur 4" TextColor="Black"/>
+                                <CheckBox Grid.Column="2" x:Name="ChkIA4" VerticalOptions="Center"/>
+                                <Label Grid.Column="3" Text="IA" VerticalOptions="Center"/>
+                                <Button Grid.Column="4" Text="✕" Clicked="OnRetirerJoueur4Clicked"
+                                        WidthRequest="40" HeightRequest="40"
+                                        BackgroundColor="Red" TextColor="White" CornerRadius="20"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <VerticalStackLayout Grid.Row="1" Padding="20" Spacing="10">
+
+                <Button
+                    x:Name="PlayBtn"
+                    Text="Jouer !"
+                    Clicked="OnBtnPlayClicked"
+                    IsEnabled="{Binding CanPlay}"
+                    Style="{StaticResource MenuButton}"/>
+                <Button
+                    x:Name="BackBtn"
+                    Text="Retour à l'accueil"
+                    Clicked="OnBtnRetourClicked"
+                    Style="{StaticResource MenuButton}"/>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

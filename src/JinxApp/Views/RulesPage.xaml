@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JinxApp.Views.RulesPage"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="background_clear.png" Aspect="AspectFill"/>
+
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <Label Grid.Row="0"
+                   Text="Règles"
+                   HorizontalOptions="Center" 
+                   FontSize="50"
+                   FontFamily="Party Vibes"/>
+
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Padding="20" Spacing="15">
+
+                    <Border BackgroundColor="#CCCCCCCC" StrokeShape="RoundRectangle 10" Padding="15">
+                        <VerticalStackLayout Spacing="10">
+
+                            <Label Text="Contenu du jeu"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Le jeu Jinx est composé de :"
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• 46 cartes numérotées réparties en 8 couleurs, avec des valeurs de 1 à 6"
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• 12 cartes chance"
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• 1 dé"
+                                   FontSize="14" TextColor="Black"/>
+
+                            <!-- Nombre de joueurs -->
+                            <Label Text="Nombre de joueurs"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Le jeu se joue de 2 à 4 joueurs."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="But du jeu"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Le but du jeu est de récolter le plus de points à la fin des trois manches, en combinant hasard et stratégie."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="Mise en place"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Les joueurs séparent les cartes numérotées des cartes chance. Les deux paquets sont mélangés séparément et placés face cachée."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="Avant chaque manche, 16 cartes numérotées sont tirées et disposées au centre de la table en une grille de 4x4 cartes face visible. Les cartes restantes ne sont pas utilisées pendant la manche."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="Un joueur est choisi aléatoirement pour commencer. Le jeu se déroule ensuite dans le sens des aiguilles d'une montre."
+                                   FontSize="14" TextColor="Black"/>
+                            
+                            <Label Text="Déroulement d'un tour"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="• Le joueur lance le dé."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Le joueur peut relancer le dé une seconde fois s'il n'est pas satisfait du premier résultat, mais il doit obligatoirement utiliser ce second résultat."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Le joueur choisit ensuite une carte visible dont la valeur correspond au résultat du dé. La carte est placée devant lui."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Exemple : si le joueur obtient 3, il peut prendre une carte portant la valeur 3."
+                                   FontSize="14" TextColor="Black" FontAttributes="Italic"/>
+                            <Label Text="• Le tour se termine et le joueur suivant joue."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Aucune nouvelle carte n'est ajoutée pendant la manche."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <!-- Fin de manche -->
+                            <Label Text="Fin de manche"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Une manche se termine lorsqu'un joueur ne peut plus prendre de carte après son lancer de dé. Les étapes suivantes sont alors appliquées :"
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="1. Vérification des couleurs : chaque joueur compare les couleurs de ses cartes avec celles restantes au centre. Si une couleur est encore présente sur la table, toutes les cartes de cette couleur sont remises au centre."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="2. Carte la plus forte : le joueur ayant déclenché la fin de manche replace au centre sa carte de plus grande valeur. S'il possède plusieurs cartes de cette valeur, il en choisit une. S'il ne possède aucune carte, il ne fait rien."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="3. Nettoyage de la table : toutes les cartes restantes au centre sont retirées du jeu."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="4. Cartes chance : chaque joueur peut piocher une carte chance en échange d'une carte numérotée. Le joueur ayant terminé la manche commence. Un joueur sans carte peut tout de même piocher une carte chance."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="Les cartes restantes des joueurs sont conservées pour la manche suivante. Une nouvelle manche commence avec 16 nouvelles cartes. Le joueur ayant terminé la manche précédente commence la suivante."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="Fin de la partie"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="La partie se termine à la fin de la troisième manche."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Chaque joueur additionne les valeurs de ses cartes restantes."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Le joueur ayant le plus de points gagne la partie."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• En cas d'égalité, plusieurs joueurs peuvent gagner."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="Les cartes chance"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Les cartes chance sont divisées en deux catégories :"
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="Cartes utilisables à chaque tour"
+                                   FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                   Margin="0,5,0,0"/>
+                            <Label Text="• Augmenter le résultat du dé de 1 par carte."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Réduire le résultat du dé de 1 par carte."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Relancer le dé plusieurs fois selon le nombre de cartes possédées."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Prendre plusieurs cartes de même couleur dont la somme correspond au résultat du dé. Si le joueur possède deux cartes de ce type, il peut ajuster la somme de plus ou moins 1."
+                                   FontSize="14" TextColor="Black"/>
+
+                            <Label Text="Cartes à usage unique"
+                                   FontSize="16" TextColor="Black" FontAttributes="Bold"
+                                   Margin="0,5,0,0"/>
+                            <Label Text="Ces cartes ne peuvent être utilisées qu'une seule fois. Elles sont jouées au début du tour ou après un lancer de dé."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Prendre directement une carte de valeur 1 à 3."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="• Prendre directement une carte de valeur 4 à 6."
+                                   FontSize="14" TextColor="Black"/>
+                            <Label Text="Ces cartes peuvent être combinées avec d'autres cartes chance."
+                                   FontSize="14" TextColor="Black" FontAttributes="Italic"/>
+
+                            <Label Text="Crédits"
+                                   FontSize="20" TextColor="Black" FontAttributes="Bold"
+                                   HorizontalOptions="Center" Margin="0,10,0,0"/>
+                            <Label Text="Arsène Poulain"
+                                   FontSize="14" TextColor="Black"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Eliott Boudon"
+                                   FontSize="14" TextColor="Black"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <VerticalStackLayout Grid.Row="2" Padding="20" Spacing="10">
+                <Button x:Name="ExempleBtn"
+                        Text="Voir un exemple de partie"
+                        Clicked="OnBtnExempleClicked"
+                        Style="{StaticResource MenuButton}"/>
+                <Button x:Name="BackBtn"
+                        Text="Retour à l'accueil"
+                        Clicked="OnBtnRetourClicked"
+                        Style="{StaticResource MenuButton}"/>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

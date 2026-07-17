@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JinxApp.Views.HomePage"
+             NavigationPage.HasNavigationBar="False"
+             Title="HomePage"
+             BackgroundImageSource="bg_app.png"
+             Shell.NavBarIsVisible="False"
+             >
+    <Grid RowDefinitions="Auto, *" Padding="0,40,0,50" RowSpacing="20">
+
+        <!-- En-tête : le titre JINX posé sur le parchemin -->
+        <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start">
+            <Image
+                Source="parchemin2.png"
+                HeightRequest="230"
+                Aspect="AspectFit"
+                Rotation="10"
+                SemanticProperties.Description="parchemin" />
+            <Label
+                Text="JINX"
+                FontSize="80"
+                TextColor="Black"
+                FontFamily="Party Vibes"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- Menu : boutons centrés avec un espacement régulier -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Button
+                x:Name="NewGame"
+                Text="Nouvelle Partie"
+                Clicked="OnBtnNewGameClicked"
+                Style="{StaticResource MenuButton}" />
+            <Button
+                x:Name="LoadGame"
+                Text="Reprendre La Partie"
+                Clicked="OnBtnLoadGameClicked"
+                Style="{StaticResource MenuButton}" />
+            <Button
+                x:Name="Rule"
+                Text="Regles du Jeu"
+                Clicked="OnBtnRulesClicked"
+                Style="{StaticResource MenuButton}" />
+            <Button
+                x:Name="Scoreboard"
+                Text="Tableau Des Scores"
+                Clicked="OnBtnScoreboardClicked"
+                Style="{StaticResource MenuButton}" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
