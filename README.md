@@ -1,15 +1,12 @@
 # Jinx
 
-[![pipeline status](https://codefirst.iut.uca.fr/gitlab/IUT_INF63/2026_1A_G12_MAUI/2026_1A_G2_POULAIN_BOUDON/badges/master/pipeline.svg)](https://codefirst.iut.uca.fr/gitlab/IUT_INF63/2026_1A_G12_MAUI/2026_1A_G2_POULAIN_BOUDON/-/pipelines)
-[![coverage](https://codefirst.iut.uca.fr/gitlab/IUT_INF63/2026_1A_G12_MAUI/2026_1A_G2_POULAIN_BOUDON/badges/master/coverage.svg)](https://codefirst.iut.uca.fr/sonarqube/dashboard?branch=master&id=CI_Jinx)
+[![CI](https://github.com/ElictFishy/Jinx/actions/workflows/ci.yml/badge.svg)](https://github.com/ElictFishy/Jinx/actions/workflows/ci.yml)
 
-Adaptation numérique du jeu de société Jinx, développée en C# / .NET MAUI dans le cadre de la SAÉ 2.01 — BUT Informatique 1ère année (2025/2026).
+Adaptation numérique du jeu de société Jinx, développée en C# / .NET MAUI dans le cadre d'une SAÉ en BUT Informatique 1ère année (2025/2026).
 
 Le jeu oppose 2 à 4 joueurs sur 3 manches, en cherchant à accumuler le maximum de points en récupérant des cartes numérotées sur un plateau de 4x4.
 
-**Équipe :** Arsène Poulain & Eliott Boudon
-
-📖 [Wiki du projet](https://codefirst.iut.uca.fr/gitlab/IUT_INF63/2026_1A_G12_MAUI/2026_1A_G2_POULAIN_BOUDON/-/wikis/home) | 📐 [Diagramme de classes](https://codefirst.iut.uca.fr/gitlab/IUT_INF63/2026_1A_G12_MAUI/2026_1A_G2_POULAIN_BOUDON/-/wikis/Diagrame-de-Classe) | 📚 [Documentation Doxygen](https://codefirst.iut.uca.fr/kubernetes/arpoulain/jinxdoc/) | 🔍 [SonarQube](https://codefirst.iut.uca.fr/sonarqube/dashboard?branch=main&id=CI_Jinx)
+**Réalisé en binôme.**
 
 ---
 
@@ -87,23 +84,19 @@ dotnet test Jinx_SansMaui.sln
 | C# / .NET 10 | Langage principal |
 | .NET MAUI | Interface graphique multiplateforme |
 | xUnit | Tests unitaires |
-| SonarQube | Analyse qualité du code |
-| GitLab CI/CD | Intégration continue |
 | Doxygen | Génération de documentation |
 | PlantUML | Diagrammes UML |
-| Discord | Communication d'équipe |
-| GitLab | Gestion de version et tickets |
 
 ---
 
 ## CI/CD
 
-Le pipeline CI/CD est configuré sur GitLab et se compose de 4 étapes :
+Le pipeline CI est configuré via GitHub Actions (`.github/workflows/ci.yml`) et se compose de deux étapes, sur la solution sans MAUI (`Jinx_SansMaui.slnx`) :
 
 - **Build** — compilation des projets `Models`, `Managers`, `ConsoleApp` et `Tests`
-- **Tests** — exécution des tests unitaires
-- **Analyse de code** — analyse SonarQube avec couverture de code via Coverlet → [tableau de bord SonarQube](https://codefirst.iut.uca.fr/sonarqube/dashboard?branch=main&id=CI_Jinx)
-- **Documentation** — génération et déploiement Doxygen → [documentation en ligne](https://codefirst.iut.uca.fr/kubernetes/arpoulain/jinxdoc/)
+- **Tests** — exécution des tests unitaires (`Models.Tests`, `Managers.Tests`)
+
+Le build de l'application mobile (MAUI) et l'analyse qualité ne sont pas inclus ici : ils demandaient l'infrastructure CI de l'établissement (image MAUI dédiée, SonarQube).
 
 ---
 
@@ -124,7 +117,7 @@ Le pipeline CI/CD est configuré sur GitLab et se compose de 4 étapes :
 - **Persistance** : sauvegarde/reprise de la partie en cours, historique des parties, classement des meilleurs scores (via `XmlDataService`)
 - Navigation entre les pages (accueil, configuration, jeu, règles, historique, classement)
 - DataBinding MAUI (plateau, deck joueur, score, tour, joueur courant)
-- Pipeline CI/CD complet (build, tests, SonarQube, Doxygen)
+- Pipeline CI (build, tests)
 - Tests unitaires des modèles et managers
 
 ### 🔄 Partiellement implémenté
