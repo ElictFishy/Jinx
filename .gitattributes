@@ -1,4 +1,7 @@
 # XAML is classified as a "data" language by GitHub Linguist, which excludes
 # data/prose languages from repo language stats by default (same as JSON,
 # YAML...) even though the files are real UI markup, not generated data.
-*.xaml linguist-detectable=true
+# linguist-detectable alone re-enabled counting but let Linguist's ambiguous-
+# extension heuristics decide the label — they predate .NET MAUI's XML
+# namespace and fell back to plain "XML". Force the exact language instead.
+*.xaml linguist-language=XAML
